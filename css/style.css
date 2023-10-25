@@ -66,7 +66,7 @@ body {
 }
 
 #yesNoButtons {
-  width: 50%;
+  width: fit-content;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

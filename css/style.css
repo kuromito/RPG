@@ -49,8 +49,7 @@ body {
   transform: translateX(-50%);
   border: none;
   color: white;
-  font-size: 1em;
-  padding: 10px 20px;
+  font-size: 2vh;
 }
 
 #moveButton {
@@ -70,6 +69,7 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  min-width: max-content;
 }
 #moveButton,
 #yesButton,
@@ -78,5 +78,11 @@ body {
     color: white;
     background: black;
     border: 2px solid white;
-    padding: 10px 20px;
+    padding: 2vh 4vh;
+}
+
+#yesButton,
+#noButton {
+    display: inline-block;
+    font-size: 2vh;
 }

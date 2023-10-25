@@ -1,0 +1,82 @@
+body {
+    background-color: #000;
+  }
+
+#gameCanvas {
+    width: 50vh;  /* 画面の幅の50％ */
+    height: 87.5vh;  /* 横幅の1.75倍 */
+    max-height: 100vh;  /* 画面の高さを超えないように制限 */
+    border: 1px solid #000;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;  /* 中央揃え */
+  }
+  #gameImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  #overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+  }
+  #yesNoButtons {
+    display: none;
+  }
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+#moveButton,
+#yesNoButtons,
+#leaveButton {
+  position: absolute;
+  bottom: 17%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  color: white;
+  font-size: 1em;
+  padding: 10px 20px;
+}
+
+#moveButton {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#leaveButton {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#yesNoButtons {
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#moveButton,
+#yesButton,
+#noButton,
+#leaveButton  {
+    color: white;
+    background: black;
+    border: 2px solid white;
+    padding: 10px 20px;
+}

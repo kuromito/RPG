@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ダンジョン探索RPGプロトタイプ</title>
+<link rel="stylesheet" href="./css/style.css"> 
+</head>
+<body>
+<div id="gameCanvas">
+  <img id="gameImage" src="img/road.png" alt="進行中">
+  <div id="overlay"></div>
+</div>
+<button id="moveButton">進む</button>
+<div id="yesNoButtons">
+  <button id="yesButton">入る</button>
+  <button id="noButton">離れる</button>
+</div>
+<button id="leaveButton" style="display:none;">出る</button>
+
+<script>
+  const gameImage = document.getElementById('gameImage');
+  const overlay = document.getElementById('overlay');
+  const moveButton = document.getElementById('moveButton');
+  const yesNoButtons = document.getElementById('yesNoButtons');
+  const yesButton = document.getElementById('yesButton');
+  const noButton = document.getElementById('noButton');
+  const leaveButton = document.getElementById('leaveButton');
+  const buttons = [moveButton, yesButton, noButton, leaveButton];
+
+  const disableButtons = () => {
+    buttons.forEach(button => {
+      button.disabled = true;
+    });
+  };
+  
+  const enableButtons = () => {
+    buttons.forEach(button => {
+      button.disabled = false;
+    });
+  };
+  
+  const animate = () => {
+    disableButtons();
+    // オーバーレイのアニメーション
+    overlay.style.animation = 'fade 1.5s forwards';
+  
+    // 画像のズームインアニメーション
+    gameImage.style.transition = 'transform 1.5s';
+    gameImage.style.transform = 'scale(1.2)';
+  
+    // アニメーションのリセット
+    setTimeout(() => {
+      overlay.style.animation = '';
+      gameImage.style.transition = '';
+      gameImage.style.transform = '';
+      enableButtons();
+    }, 1500);
+  };
+  
+  moveButton.addEventListener('click', () => {
+    animate();
+  
+    // 画像の切り替え
+    setTimeout(() => {
+      gameImage.style.transition = 'transform 0s';
+      gameImage.style.transform = 'scale(1.0)';
+      const randomNum = Math.random();
+      if (randomNum < 0.2) {
+        gameImage.src = 'img/door1.png';
+        gameImage.alt = '扉を発見しました';
+        yesNoButtons.style.display = 'block';
+        moveButton.style.display = 'none';
+        leaveButton.style.display = 'none';
+      } else {
+        gameImage.src = 'img/road.png';
+        gameImage.alt = '進行中';
+        yesNoButtons.style.display = 'none';
+        moveButton.style.display = 'block';
+        leaveButton.style.display = 'none';
+      }
+    }, 750);
+  });
+  
+  yesButton.addEventListener('click', () => {
+    animate();
+    setTimeout(() => {
+      gameImage.style.transition = 'transform 0s';
+      gameImage.style.transform = 'scale(1.0)';
+      gameImage.src = 'img/room3.png';
+      gameImage.alt = '部屋に到達しました';
+      yesNoButtons.style.display = 'none';
+      moveButton.style.display = 'none';
+      leaveButton.style.display = 'block';
+    }, 750);
+  });
+  
+  noButton.addEventListener('click', () => {
+    animate();
+    setTimeout(() => {
+      gameImage.style.transition = 'transform 0s';
+      gameImage.style.transform = 'scale(1.0)';
+      gameImage.src = 'img/road.png';
+      gameImage.alt = '進行中';
+      yesNoButtons.style.display = 'none';
+      moveButton.style.display = 'block';
+      leaveButton.style.display = 'none';
+    }, 750);
+  });
+  
+  leaveButton.addEventListener('click', () => {
+    animate();
+    setTimeout(() => {
+      gameImage.style.transition = 'transform 0s';
+      gameImage.style.transform = 'scale(1.0)';
+      gameImage.src = 'img/road.png';
+      gameImage.alt = '進行中';
+      yesNoButtons.style.display = 'none';
+      moveButton.style.display = 'block';
+      leaveButton.style.display = 'none';
+    }, 750);
+  });
+  
+  </script>
+</body>
+</html>
